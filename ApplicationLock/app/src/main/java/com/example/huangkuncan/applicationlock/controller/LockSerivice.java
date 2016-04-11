@@ -26,9 +26,10 @@ public class LockSerivice extends Service {
     private ActivityManager mActivityManager;
     private ComponentName topActivity;
     private String topPackageName;
-    private static final String TAG="hkc";
-   //将自己的app设置为白名单
-    private static final String WhiteApp="com.example.huangkuncan.applicationlock";
+    private static final String TAG = "hkc";
+    //将自己的app设置为白名单
+    private static final String WhiteApp = "com.example.huangkuncan.applicationlock";
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -45,10 +46,12 @@ public class LockSerivice extends Service {
         Intent intent = new Intent(context, LockSerivice.class);
         context.startService(intent);
     }
-   public static void stopSerivice(Context context){
-       Intent intent=new Intent(context,LockSerivice.class);
-       context.stopService(intent);
-   }
+
+    public static void stopSerivice(Context context) {
+        Intent intent = new Intent(context, LockSerivice.class);
+        context.stopService(intent);
+    }
+
     private void init() {
         pollingRunnable = new Runnable() {
             @Override
@@ -64,7 +67,12 @@ public class LockSerivice extends Service {
         topActivity = mActivityManager.getRunningTasks(1).get(0).topActivity;
         topPackageName = topActivity.getPackageName();
         Log.d("hkc", "getActivity: 报名  " + topPackageName);
-        LockActivity.startActivity(this);
+        //跳过白名单
+        if (!topPackageName.equals(WhiteApp)) {
+            if (LockAppManager.getInstance().isChoosed(topPackageName)) {
+                LockActivity.startActivity(this);
+            }
+        }
     }
 
     @Nullable

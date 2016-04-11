@@ -2,6 +2,7 @@ package com.example.huangkuncan.applicationlock.controller;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
+import android.util.Log;
 
 import com.example.huangkuncan.applicationlock.database.LockDataBase;
 import com.example.huangkuncan.applicationlock.model.LockAppInfo;
@@ -23,9 +24,12 @@ public class LockAppManager {
 
     private LockAppManager() {
         list = mContext.getPackageManager().getInstalledPackages(0);
-        listPackages = LockDataBase.getInstance().getAll();
+        updateData();
     }
+    private void updateData(){
+        listPackages = LockDataBase.getInstance().getAll();
 
+    }
     public static void initConfig(Context context) {
         mContext = context;
     }
@@ -64,6 +68,7 @@ public class LockAppManager {
      */
     public void lock(String packageName) {
         LockDataBase.getInstance().add(packageName);
+        updateData();
     }
 
     /**
@@ -72,6 +77,7 @@ public class LockAppManager {
     public void lock(List<String> packageName) {
         if (packageName == null || packageName.size() == 0) return;
         LockDataBase.getInstance().add(packageName);
+        updateData();
     }
 
     /**
@@ -79,6 +85,7 @@ public class LockAppManager {
      */
     public void unlock(String packageName) {
         LockDataBase.getInstance().delete(packageName);
+        updateData();
     }
 
     /**
@@ -87,9 +94,10 @@ public class LockAppManager {
     public void unlock(List<String> packageName) {
         if (packageName == null || packageName.size() == 0) return;
         LockDataBase.getInstance().delete(packageName);
+        updateData();
     }
 
-    /**
+    /**g
      * @param info
      * @return 判断某个app包是否已经被加锁了
      */
@@ -114,6 +122,7 @@ public class LockAppManager {
         }
         int length = listPackages.size();
         for (int i = 0; i < length; i++) {
+        Log.d("hkc", "isChoosed: "+listPackages.get(i));
             if (packageName.equals(listPackages.get(i)))
                 return true;
         }
