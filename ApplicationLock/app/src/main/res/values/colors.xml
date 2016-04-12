@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="btn_normal_color">#327832</color>
     <color name="btn_pressed_color">#908922</color>
+    <color name="shape_linearlayout_back_collor">#908922</color>
+    <color name="white">#ffffff</color>
 </resources>

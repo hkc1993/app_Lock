@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 
 import com.example.huangkuncan.applicationlock.R;
+import com.example.huangkuncan.applicationlock.View.View.TopView;
 
 /**
  * Created by huangkuncan on 2016/4/11.
@@ -13,10 +15,20 @@ import com.example.huangkuncan.applicationlock.R;
  * 功能：要求输入密码界面
  */
 public class LockActivity extends Activity {
+    private TopView tv;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock);
+        tv= (TopView) findViewById(R.id.test_tv);
+        tv.setText("tesst");
+
     }
     public static void startActivity(Context context){
         Intent intent=new Intent(context,LockActivity.class);

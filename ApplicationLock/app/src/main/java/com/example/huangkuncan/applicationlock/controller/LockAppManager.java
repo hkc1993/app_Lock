@@ -20,16 +20,18 @@ public class LockAppManager {
     //从系统获取的所有的app信息
     private List<PackageInfo> list;
     //从数据库获取的已经被加锁的app
-    private List<String> listPackages=new ArrayList<String>();
+    private List<String> listPackages = new ArrayList<String>();
 
     private LockAppManager() {
         list = mContext.getPackageManager().getInstalledPackages(0);
         updateData();
     }
-    private void updateData(){
+
+    private void updateData() {
         listPackages = LockDataBase.getInstance().getAll();
 
     }
+
     public static void initConfig(Context context) {
         mContext = context;
     }
@@ -97,7 +99,7 @@ public class LockAppManager {
         updateData();
     }
 
-    /**g
+    /**
      * @param info
      * @return 判断某个app包是否已经被加锁了
      */
@@ -112,8 +114,8 @@ public class LockAppManager {
         }
         return false;
     }
+
     /**
-     *
      * @return 判断某个app包是否已经被加锁了
      */
     public boolean isChoosed(String packageName) {
@@ -122,7 +124,7 @@ public class LockAppManager {
         }
         int length = listPackages.size();
         for (int i = 0; i < length; i++) {
-        Log.d("hkc", "isChoosed: "+listPackages.get(i));
+            Log.d("hkc", "isChoosed: " + listPackages.get(i));
             if (packageName.equals(listPackages.get(i)))
                 return true;
         }

@@ -16,7 +16,6 @@ import com.example.huangkuncan.applicationlock.controller.LockGridViewAdapter;
 import com.example.huangkuncan.applicationlock.controller.LockSerivice;
 import com.example.huangkuncan.applicationlock.controller.LockStore;
 import com.example.huangkuncan.applicationlock.controller.LockViewPagerAdapter;
-import com.example.huangkuncan.applicationlock.database.LockDataBase;
 import com.example.huangkuncan.applicationlock.model.LockAppInfo;
 
 import java.util.ArrayList;
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private List<View> mGridViews = new ArrayList<View>();
     private TextView mNextBtn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         //开启后台服务
         LockSerivice.startSerivice(this);
     }
-
     @Override
     protected void onDestroy() {
         //关闭后台
