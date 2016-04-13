@@ -28,7 +28,6 @@ import java.util.zip.Inflater;
 public class LockGridViewAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<LockAppInfo> list;
-
     public LockGridViewAdapter(Context context, List<LockAppInfo> list) {
         inflater = LayoutInflater.from(context);
         this.list=list;

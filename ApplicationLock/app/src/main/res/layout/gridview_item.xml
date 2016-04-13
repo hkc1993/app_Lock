@@ -15,9 +15,11 @@
         android:id="@+id/gridview_item_cb"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:gravity="center"
         android:layout_alignEnd="@id/gridview_item_iv"
         android:layout_alignRight="@id/gridview_item_iv"
         android:layout_alignTop="@id/gridview_item_iv"
+        style="@style/checkboxTheme"
         />
 
     <TextView
