@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:gravity="center_horizontal"
+              android:orientation="horizontal">
+    <TextView
+        android:id="@+id/dialog_add_lock_appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/dialog_add_lock_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:gravity="center"
+        android:text="加锁"
+        android:textSize="@dimen/top_view_tv_dimen"
+        />
+
+    <TextView
+        android:id="@+id/dialog_add_lock_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:gravity="center"
+        android:text="取消"
+        android:textSize="@dimen/top_view_tv_dimen"
+        />
+</LinearLayout>

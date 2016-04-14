@@ -26,61 +26,61 @@ import java.util.zip.Inflater;
  * 功能：
  */
 public class LockGridViewAdapter extends BaseAdapter {
-    private LayoutInflater inflater;
-    private List<LockAppInfo> list;
-    public LockGridViewAdapter(Context context, List<LockAppInfo> list) {
-        inflater = LayoutInflater.from(context);
-        this.list=list;
-    }
+	private LayoutInflater inflater;
+	private List<LockAppInfo> list;
 
-    @Override
-    public int getCount() {
-        return list.size();
-    }
+	public LockGridViewAdapter(Context context, List<LockAppInfo> list) {
+		inflater = LayoutInflater.from(context);
+		this.list = list;
+	}
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
+	@Override
+	public int getCount() {
+		return list.size();
+	}
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+	@Override
+	public Object getItem(int position) {
+		return null;
+	}
 
-    @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        if (convertView == null) {
-            holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.gridview_item, null);
-            holder.iv = (ImageView) convertView.findViewById(R.id.gridview_item_iv);
-            holder.cb = (CheckBox) convertView.findViewById(R.id.gridview_item_cb);
-            holder.tv = (TextView) convertView.findViewById(R.id.gridview_item_tv);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-        holder.tv.setText(list.get(position).packageInfo.applicationInfo.loadLabel(LockStore.getInstance().getGetApplication()));
-        holder.cb.setChecked(list.get(position).isChoosed);
-        holder.cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    LockStore.getInstance().lock(list.get(position).packageInfo.packageName);
-                }
-                else{
-                    LockStore.getInstance().unlock(list.get(position).packageInfo.packageName);
-                }
-            }
-        });
-        holder.iv.setImageDrawable(list.get(position).packageInfo.applicationInfo.loadIcon(LockStore.getInstance().getGetApplication()));
-        return convertView;
-    }
+	@Override
+	public long getItemId(int position) {
+		return 0;
+	}
 
-    public class ViewHolder {
-        ImageView iv;
-        CheckBox cb;
-        TextView tv;
-    }
+	@Override
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		ViewHolder holder;
+		if (convertView == null) {
+			holder = new ViewHolder();
+			convertView = inflater.inflate(R.layout.gridview_item, null);
+			holder.iv = (ImageView) convertView.findViewById(R.id.gridview_item_iv);
+			holder.cb = (CheckBox) convertView.findViewById(R.id.gridview_item_cb);
+			holder.tv = (TextView) convertView.findViewById(R.id.gridview_item_tv);
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+		holder.tv.setText(list.get(position).packageInfo.applicationInfo.loadLabel(LockStore.getInstance().getGetApplication()));
+		holder.cb.setChecked(list.get(position).isChoosed);
+		holder.cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked) {
+					LockStore.getInstance().lock(list.get(position).packageInfo.packageName);
+				} else {
+					LockStore.getInstance().unlock(list.get(position).packageInfo.packageName);
+				}
+			}
+		});
+		holder.iv.setImageDrawable(list.get(position).packageInfo.applicationInfo.loadIcon(LockStore.getInstance().getGetApplication()));
+		return convertView;
+	}
+
+	public class ViewHolder {
+		ImageView iv;
+		CheckBox cb;
+		TextView tv;
+	}
 }

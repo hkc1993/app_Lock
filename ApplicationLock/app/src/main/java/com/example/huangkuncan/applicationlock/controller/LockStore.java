@@ -1,5 +1,7 @@
 package com.example.huangkuncan.applicationlock.controller;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 
 import java.util.ArrayList;
@@ -31,6 +33,25 @@ public class LockStore {
     private List<String> listUnlock=new ArrayList<String>();
     private PackageManager getApplication;
 
+    /**
+     * @param text
+     * 存储密码
+     */
+    public  void setPassword(String text){
+        SharedPreferences sp=LockAppication.context.getSharedPreferences("lock", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor= sp.edit();
+        editor.putString("password",text);
+        editor.commit();
+    }
+
+    /**
+     * @return
+     * 获取密码
+     */
+    public String getPassword(){
+        SharedPreferences sp=LockAppication.context.getSharedPreferences("lock", Context.MODE_PRIVATE);
+        return sp.getString("password","0000");
+    }
     public List<String> getListChoosed() {
         return listChoosed;
     }

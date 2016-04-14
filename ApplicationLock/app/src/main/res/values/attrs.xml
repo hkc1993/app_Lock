@@ -4,5 +4,6 @@
         <attr name="textLenth" format="integer" />
         <attr name="boardColor" format="color" />
         <attr name="textColor" format="color" />
+        <attr name="viewWidth" format="dimension" />
     </declare-styleable>
 </resources>

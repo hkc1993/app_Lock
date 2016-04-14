@@ -1,6 +1,7 @@
 package com.example.huangkuncan.applicationlock.controller;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.huangkuncan.applicationlock.database.LockDataBase;
 
@@ -10,12 +11,13 @@ import com.example.huangkuncan.applicationlock.database.LockDataBase;
  * 功能：
  */
 public class LockAppication extends Application {
+    public static Context context;
     @Override
     public void onCreate() {
         super.onCreate();
         //初始化配置
         LockDataBase.initConfig(getApplicationContext());
         LockAppManager.initConfig(getApplicationContext());
-
+        context=getApplicationContext();
     }
 }

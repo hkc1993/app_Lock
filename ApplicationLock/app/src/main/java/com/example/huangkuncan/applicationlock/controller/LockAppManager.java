@@ -124,7 +124,6 @@ public class LockAppManager {
         }
         int length = listPackages.size();
         for (int i = 0; i < length; i++) {
-            Log.d("hkc", "isChoosed: " + listPackages.get(i));
             if (packageName.equals(listPackages.get(i)))
                 return true;
         }

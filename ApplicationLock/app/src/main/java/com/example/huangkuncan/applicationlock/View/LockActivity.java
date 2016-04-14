@@ -27,7 +27,7 @@ public class LockActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock);
         tv= (TopView) findViewById(R.id.test_tv);
-        tv.setText("tesst");
+
 
     }
     public static void startActivity(Context context){

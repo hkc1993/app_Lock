@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">ApplicationLock</string>
     <string name="main_activity_btn_next">下一步</string>
+    <string name="lock_view_remind_input_password">使用前请输入密码</string>
+    <string name="lock_view_remind_input_again">密码错误，请重新输入</string>
+    <string name="lock_view_remind_set_password">亲爱的用户\n首次登陆请输入上锁密码</string>
+    <string name="lock_view_remind_set_again">再次输入</string>
+    <string name="lock_view_remind_set_wrong">两次不一样</string>
+    <string name="set_success">您已设置成功\n此密码将在您进入勾选应用时启用</string>
+    <string name="change_password">更改密码</string>
+    <string name="change_app">更改应用</string>
 </resources>
