@@ -1,6 +1,7 @@
 package com.example.huangkuncan.applicationlock.controller;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.util.Log;
 
@@ -21,7 +22,7 @@ public class LockAppManager {
     private List<PackageInfo> list;
     //从数据库获取的已经被加锁的app
     private List<String> listPackages = new ArrayList<String>();
-
+   static String TAG="hkc";
     private LockAppManager() {
         list = mContext.getPackageManager().getInstalledPackages(0);
         updateData();
@@ -53,14 +54,20 @@ public class LockAppManager {
         int length = list.size();
         LockAppInfo info;
         for (int i = 0; i < length; i++) {
-            info = new LockAppInfo();
-            if (isChoosed(list.get(i))) {
-                info.isChoosed = true;
-            } else {
-                info.isChoosed = false;
+                //另一种方式判断是不是系统应用
+            if((list.get(i).applicationInfo.flags& ApplicationInfo.FLAG_SYSTEM)<=0){
+                //uid大于10000是用户安装的应用
+//            if(list.get(i).applicationInfo.uid>10000){
+                info = new LockAppInfo();
+                if (isChoosed(list.get(i))) {
+                    info.isChoosed = true;
+                } else {
+                    info.isChoosed = false;
+                }
+                info.packageInfo = list.get(i);
+                lockList.add(info);
             }
-            info.packageInfo = list.get(i);
-            lockList.add(info);
+
         }
         return lockList;
     }
@@ -69,8 +76,10 @@ public class LockAppManager {
      * @param packageName 将一个app变成加锁状态
      */
     public void lock(String packageName) {
+        Log.d(TAG, "lock: 钱 "+listPackages.size());
         LockDataBase.getInstance().add(packageName);
         updateData();
+        Log.d(TAG, "lock: 后 "+listPackages.size());
     }
 
     /**

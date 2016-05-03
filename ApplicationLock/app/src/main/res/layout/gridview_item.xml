@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_marginTop="20dp"
-    android:layout_height="wrap_content">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="53dp"
+                android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/gridview_item_iv"
         android:layout_width="49dp"
         android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/common_ic_googleplayservices"
         />
 
     <CheckBox
+        android:layout_marginLeft="5dp"
         android:id="@+id/gridview_item_cb"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:button="@drawable/checkbox_select"
-        android:layout_alignEnd="@id/gridview_item_iv"
-        android:layout_alignRight="@id/gridview_item_iv"
-        android:layout_alignTop="@id/gridview_item_iv"
-        style="@style/checkboxTheme"
-        android:checked="false"/>
+        android:layout_marginRight="13dp"
+        android:layout_alignParentRight="true"
+        android:checked="false"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/gridview_item_tv"
         android:layout_width="45dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/gridview_item_iv"
-        android:textSize="12sp"
         android:ellipsize="end"
-        android:maxLength="5"
         android:gravity="center"
+        android:maxLength="5"
         android:singleLine="true"
-        android:text="弟弟出行" />
+        android:text="弟弟出行"
+        android:textSize="12sp"/>
 </RelativeLayout>

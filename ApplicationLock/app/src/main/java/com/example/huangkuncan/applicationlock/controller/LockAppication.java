@@ -3,6 +3,7 @@ package com.example.huangkuncan.applicationlock.controller;
 import android.app.Application;
 import android.content.Context;
 
+import com.bugtags.library.Bugtags;
 import com.example.huangkuncan.applicationlock.database.LockDataBase;
 
 /**
@@ -19,5 +20,7 @@ public class LockAppication extends Application {
         LockDataBase.initConfig(getApplicationContext());
         LockAppManager.initConfig(getApplicationContext());
         context=getApplicationContext();
+        //在这里初始化
+        Bugtags.start("c03a65a02efa7ab5fc80be3340327bae", this, Bugtags.BTGInvocationEventBubble);
     }
 }
