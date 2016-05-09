@@ -58,7 +58,6 @@ public class TopView extends LinearLayout {
 		mNameTv = (TextView) view.findViewById(R.id.common_top_view_text_name);
 		mStateTv = (TextView) view.findViewById(R.id.common_top_view_text_state);
 	}
-
 	public void setImage(Drawable drawable) {
 		mIconIv.setImageDrawable(drawable);
 	}

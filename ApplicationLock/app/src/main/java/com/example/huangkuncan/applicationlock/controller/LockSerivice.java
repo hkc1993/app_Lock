@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.transition.Explode;
 import android.util.Log;
 import android.view.Gravity;
@@ -133,7 +134,6 @@ public class LockSerivice extends Service {
 				return false;
 			}
 		});
-		mLayoutParams.alpha = 0.95f;
 		mLayoutParams.gravity = Gravity.CENTER;
 	}
 
@@ -144,7 +144,6 @@ public class LockSerivice extends Service {
 		if (mLockView != null && mHaveShowWindow) {
 			mWindowManager.removeView(mLockView);
 			mHaveShowWindow = false;
-			unLockingApp = null;
 //			LockStore.getInstance().clearPackageNameLocked();
 		}
 	}
@@ -157,6 +156,7 @@ public class LockSerivice extends Service {
 			mWindowManager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
 		}
 		if (!mHaveShowWindow) {
+			mLockView.setTopText(getString(R.string.input_password_before));
 			mLockView.clearEditText();
 			mWindowManager.addView(mLockView, mLayoutParams);
 			mHaveShowWindow = true;
@@ -182,7 +182,6 @@ public class LockSerivice extends Service {
 		}
 	}
 
-	List<ActivityManager.RunningAppProcessInfo> listinfo;
 
 	/**
 	 * 获取栈顶的activity
@@ -205,8 +204,8 @@ public class LockSerivice extends Service {
 		if (!topPackageName.equals(WhiteApp)) {
 			//该包名已经被选择加锁
 			if (LockAppManager.getInstance().isChoosed(topPackageName)) {
-				Log.d(TAG, "equals   " + topPackageName.equals(LockStore.getInstance().getPackageNameLocked()));
-				if (unLockingApp == null) {
+				Log.d(TAG, "unLockingApp   " + unLockingApp);
+				if (!TextUtils.equals(unLockingApp,topPackageName)) {
 					unLockingApp = topPackageName;
 					setViewText();
 					//弹出
@@ -218,7 +217,11 @@ public class LockSerivice extends Service {
 			} else if (unLockingApp != null && !topPackageName.equals(unLockingApp)) {
 				//用户按下了home键或者返回键
 				//待解app已经关闭，关闭解锁界面
-				removePopView();
+//				if(mHaveShowWindow){
+					removePopView();
+					unLockingApp=null;
+//				}
+
 			}
 		}
 	}

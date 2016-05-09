@@ -16,4 +16,9 @@
     <string name="please_input_new_password">请输入新的四位数字密码</string>
     <string name="input_password_before">使用前请输入密码</string>
     <string name="launch_text">安卓应用锁</string>
+    <string name="open_overlay">开启悬浮窗权限</string>
+    <string name="allow_look">允许查看使用情况</string>
+    <string name="permission_setting">警告！一定要按要求开启权限！否则无法使用！</string>
+    <string name="guide_open_state">滑到最下面，点击【显示悬浮窗】并选择允许</string>
+    <string name="guide_look">点击[Minilock]并启用</string>
 </resources>

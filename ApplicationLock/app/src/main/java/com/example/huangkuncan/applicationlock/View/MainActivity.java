@@ -36,7 +36,8 @@ public class MainActivity extends LockBaseActivity {
 	private RelativeLayout rl;
 	private LinearLayout ll;
 	private int mPageNum = 2;
-	private int mGridHaveAppNum = 15;
+	private static final int column_num=4;
+	private static final int mGridHaveAppNum = 3*column_num;
 	private LockViewPagerAdapter mViewPagerAdapter;
 	private LockGridViewAdapter mGridViewAdapter;
 	private List<View> mGridViews = new ArrayList<View>();
@@ -56,8 +57,7 @@ public class MainActivity extends LockBaseActivity {
 		setIndicator();
 		//配置信息
 		LockStore.getInstance().setGetApplication(getPackageManager());
-		//开启后台服务
-		LockSerivice.startSerivice(this);
+
 		mNeedCheckPasswod = false;
 	}
 
@@ -108,11 +108,11 @@ public class MainActivity extends LockBaseActivity {
 		mPageNum = num % mGridHaveAppNum == 0 ? num / mGridHaveAppNum : num / mGridHaveAppNum + 1;
 		for (int i = 0; i < mPageNum; i++) {
 			GridView gridView = new GridView(this);
-			gridView.setNumColumns(5);
-			LockGridViewAdapter adapter = new LockGridViewAdapter(this, generateList(list, start, start + 15 <= num ? start + 15 : num));
+			gridView.setNumColumns(column_num);
+			LockGridViewAdapter adapter = new LockGridViewAdapter(this, generateList(list, start, start + mGridHaveAppNum <= num ? start + mGridHaveAppNum : num));
 			gridView.setAdapter(adapter);
 			mGridViews.add(gridView);
-			start += 15;
+			start += mGridHaveAppNum;
 		}
 
 	}

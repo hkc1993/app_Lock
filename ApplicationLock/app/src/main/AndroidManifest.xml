@@ -23,6 +23,11 @@
             >
         </activity>
         <activity
+            android:name=".View.PerssionActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
             android:name=".View.LaunchActivity"
             android:screenOrientation="portrait">
 
@@ -41,15 +46,14 @@
             android:value="@integer/google_play_services_version"/>
         <receiver
             android:name=".controller.PackageAddReceiver"
-
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED"/>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-                <action android:name="android.intent.action.SCREEN_ON"/>
-                <action android:name="android.intent.action.SCREEN_OFF"/>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.PACKAGE_FIRST_LAUNCH"/>
                 <data android:scheme="package"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
     </application>

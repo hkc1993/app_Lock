@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.huangkuncan.applicationlock.R;
 import com.example.huangkuncan.applicationlock.View.View.TopView;
+import com.example.huangkuncan.applicationlock.controller.LockSerivice;
 
 /**
  * Created by huangkuncan on 2016/4/14.
@@ -27,6 +28,8 @@ public class SetSuccessActivity extends LockBaseActivity {
 		setContentView(R.layout.set_success_activity);
 		flag = getIntent().getIntExtra("flag", 0);
 		initView();
+		//开启后台服务
+		LockSerivice.startSerivice(this);
 	}
 
 	@Override

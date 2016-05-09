@@ -1,5 +1,6 @@
 package com.example.huangkuncan.applicationlock.View.View;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -61,11 +62,11 @@ public class LockView extends LinearLayout {
 		if (mDivideEidtText == null) return;
 		mDivideEidtText.setText("");
 	}
-
 	/**
 	 * @param drawable 设置app的图标
 	 */
 	public void setAppDrawable(Drawable drawable) {
+
 		mTopView.setImage(drawable);
 	}
 

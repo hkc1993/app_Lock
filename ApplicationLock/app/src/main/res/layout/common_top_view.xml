@@ -11,7 +11,7 @@
         android:id="@+id/common_top_view_iv"
         android:layout_width="49dp"
         android:layout_height="49dp"
-        android:background="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/common_top_view_text_name"
