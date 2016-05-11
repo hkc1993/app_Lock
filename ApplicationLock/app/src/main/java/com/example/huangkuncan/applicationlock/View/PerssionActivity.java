@@ -54,10 +54,10 @@ public class PerssionActivity extends LockBaseActivity {
                 }
             });
         }
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            mLookTv= (TextView) findViewById(R.id.permission_look);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mLookTv = (TextView) findViewById(R.id.permission_look);
             mLookTv.setVisibility(View.VISIBLE);
-            mLookTv.setOnClickListener(new View.OnClickListener(){
+            mLookTv.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -65,7 +65,12 @@ public class PerssionActivity extends LockBaseActivity {
                 }
             });
         }
-
+        findViewById(R.id.permission_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public static void startActivity(Context context) {

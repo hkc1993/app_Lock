@@ -109,6 +109,8 @@ public class MainActivity extends LockBaseActivity {
 		for (int i = 0; i < mPageNum; i++) {
 			GridView gridView = new GridView(this);
 			gridView.setNumColumns(column_num);
+			gridView.setHorizontalSpacing(Utils.px2dip(this,20f));
+			gridView.setGravity(Gravity.CENTER);
 			LockGridViewAdapter adapter = new LockGridViewAdapter(this, generateList(list, start, start + mGridHaveAppNum <= num ? start + mGridHaveAppNum : num));
 			gridView.setAdapter(adapter);
 			mGridViews.add(gridView);

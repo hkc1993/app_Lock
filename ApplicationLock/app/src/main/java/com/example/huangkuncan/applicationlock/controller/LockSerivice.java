@@ -213,7 +213,6 @@ public class LockSerivice extends Service {
 				} else {
 					//已经弹出悬浮窗，不需要再弹。
 				}
-
 			} else if (unLockingApp != null && !topPackageName.equals(unLockingApp)) {
 				//用户按下了home键或者返回键
 				//待解app已经关闭，关闭解锁界面

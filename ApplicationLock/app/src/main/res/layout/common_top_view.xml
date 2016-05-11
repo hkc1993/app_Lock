@@ -19,7 +19,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:textColor="@color/gray"
-        android:text="Mini LOCKER"
+        android:text="MiniLock"
         android:textSize="@dimen/top_view_tv_dimen" />
 
     <LinearLayout
